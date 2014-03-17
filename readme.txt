@@ -16,20 +16,20 @@ Demo: http://dev.bappi-d-great.com/faq-all/
 
 == Installation ==
 
-Way 1:<br>
-1. Download the plugin file<br>
-2. Unzip the file into a folder on your hard drive<br>
-3. Upload via FTP into your plugins (/wp-content/plugins/) folder<br>
-4. Activate the plugin from your dashboard<br>
-<br><br>
-Way 2:<br>
-1. From Dashboard > Plugins > Add New > Upload the plugin<br>
-2. Activate the plugin<br>
-<br><br>
-To show FAQs<br>
-1. Use [show_faq] shortcode to show all items.<br>
-2. Use [show_faq id = “1”] to show faq for a category which ID is 1.<br>
-<br><br>
+**Way 1:**
+* Download the plugin file
+* Unzip the file into a folder on your hard drive
+* Upload via FTP into your plugins (/wp-content/plugins/) folder
+* Activate the plugin from your dashboard
+
+**Way 2:**
+* From Dashboard > Plugins > Add New > Upload the plugin
+* Activate the plugin
+
+**To show FAQs**
+* Use [show_faq] shortcode to show all items.
+* Use [show_faq id = “1”] to show faq for a category which ID is 1.
+
 Demo: http://dev.bappi-d-great.com/faq-all/
 
 == Frequently Asked Questions ==
