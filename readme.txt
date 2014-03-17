@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: faqs, faq
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 1.4
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,19 +16,19 @@ Demo: http://dev.bappi-d-great.com/faq-all/
 
 == Installation ==
 
-**Way 1:**
-1. Download the plugin file
-2. Unzip the file into a folder on your hard drive
-3. Upload via FTP into your plugins (/wp-content/plugins/) folder
-4. Activate the plugin from your dashboard
+**Way 1:**<br>
+1. Download the plugin file<br>
+2. Unzip the file into a folder on your hard drive<br>
+3. Upload via FTP into your plugins (/wp-content/plugins/) folder<br>
+4. Activate the plugin from your dashboard<br>
 
-**Way 2:**
-1. From Dashboard > Plugins > Add New > Upload the plugin
-2. Activate the plugin
+**Way 2:**<br>
+1. From Dashboard > Plugins > Add New > Upload the plugin<br>
+2. Activate the plugin<br>
 
-**To show FAQs**
-1. Use [show_faq] shortcode to show all items.
-2. Use [show_faq id = “1”] to show faq for a category which ID is 1.
+**To show FAQs**<br>
+1. Use [show_faq] shortcode to show all items.<br>
+2. Use [show_faq id = “1”] to show faq for a category which ID is 1.<br>
 
 Demo: http://dev.bappi-d-great.com/faq-all/
 
@@ -38,6 +38,12 @@ Demo: http://dev.bappi-d-great.com/faq-all/
 Yes
 
 == Changelog ==
+= 1.5 =
+* Small Bug Fixed
+
+= 1.4 =
+* Small Bug Fixed
+
 = 1.3 =
 * Small Bug Fixed
 
