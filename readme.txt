@@ -45,6 +45,9 @@ Demo: http://dev.bappi-d-great.com/faq-all/
 Yes
 
 == Changelog ==
+= 2.1 =
+* JS Error fixed
+
 = 2.0 =
 * Widget is added
 * Translatable file is added

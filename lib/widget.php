@@ -23,7 +23,7 @@ class FAQ_Widget extends WP_Widget {
             $data = $this->options;
             if(!isset($data['theme'])) $data['theme'] = 'theme-1';
             if(!isset($data['expand'])) $data['expand'] = 'false';
-            if(!isset($data['faq_speed'])) $data['faq_speed'] = 500;
+            if(!isset($data['faq_speed']) || $data['faq_speed'] == '') $data['faq_speed'] = 500;
             include plugin_dir_path( __FILE__ ).'../templates/widget_view.php';
             echo $html;
         }
