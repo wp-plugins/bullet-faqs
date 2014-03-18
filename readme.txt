@@ -4,13 +4,17 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: faqs, faq
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 1.6
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
 Provides nice Frequently Asked Questions Page with answers hidden until the question is clicked then the desired answer fades smoothly into view, like accordion. User will have options to add categories, and questions based on those categories. Users can show question from a single category using shortcode. They will have control to change theme (among 9 themes), animation speed and custom CSS.
+
+There is also a widget where the user can show FAQs from a category.
+
+Don’t like any theme? You can write css in custom css box in the settings page.
 
 Demo: http://dev.bappi-d-great.com/faq-all/
 
@@ -32,12 +36,24 @@ Demo: http://dev.bappi-d-great.com/faq-all/
 
 Demo: http://dev.bappi-d-great.com/faq-all/
 
+== Screenshots ==
+1. This is the settings page
+
 == Frequently Asked Questions ==
 
 = Is it responsive? =
 Yes
 
 == Changelog ==
+= 2.0 =
+* Widget is added
+* Translatable file is added
+* Default value is added if the user doesn’t set any settings
+* Screenshots added
+
+= 1.6 =
+* Small Bug Fixed
+
 = 1.5 =
 * Small Bug Fixed
 

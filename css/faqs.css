@@ -115,3 +115,7 @@ License: GPLv2 or later
     top: 2px;
     font-size: 10px;
 }
+
+.accod_parent a{
+    display: inline;
+}

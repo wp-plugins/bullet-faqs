@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<h2>Freequently Asked Question on <?php echo $cat->name; ?></h2>
+<h2><?php _e('Frequently Asked Question on', LANG_DOMAIN); ?> <?php echo $cat->name; ?></h2>
 <?php
     $args = array(
         'post_type' => 'faq',

@@ -1,6 +1,6 @@
 <?php ob_start();  ?>
 
-<h2 id="faq-top">Freequently Asked Question</h2>
+<h2 id="faq-top"><?php _e('Frequently Asked Question', LANG_DOMAIN) ?></h2>
 <div class="smart_all_accordion accod_parent">
     <ul class="faq-labels">
         <?php foreach($cat as $item) { ?>

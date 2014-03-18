@@ -3,11 +3,15 @@
 Plugin Name: Bullet FAQs
 Plugin URI: http://bappi-d-great.com
 Description: Provides nice Frequently Asked Questions Page with answers hidden untill the question is clicked then the desired answer fades smoothly into view, like accordion. User will have options to add categories, and questions based on those categories. Users can show question from a single category using shortcode. They will have control to change theme (among 9 themes), animation speed and custom CSS.
-Version: 1.6
+Version: 2.0
 Author: Bappi D Great
 Author URI: http://bappi-d-great.com
 License: GPLv2 or later
 */
+
+define ('LANG_DOMAIN', 'bllfaq');
+define ('PLUGIN_PATH_CSS', plugins_url( 'css/faqs.css', __FILE__ ));
+define ('PLUGIN_PATH_JS', plugins_url( 'js/faqAccordion.js', __FILE__ ));
 
 require_once 'lib/base.php';
 require_once 'lib/widget.php';
@@ -23,8 +27,19 @@ class FAQ extends BASE
         parent::__construct();
         $this->faq_init();
         $this->options = get_option('faq_options');
+	
+	add_action('plugin_loaded', array($this, 'localization'));
+	
     }
     
+    //Language define
+    public function localization() {
+        if($this->location == 'plugins') {
+            load_plugin_textdomain('csslang', FALSE, '/lang/');
+        }
+        $temp_locale = explode('_', get_locale());
+        $this->language = ($temp_locale) ? $temp_locale[0] : 'en';
+    }
     
     /*
      * 
@@ -66,6 +81,11 @@ class FAQ extends BASE
   
         $html = '';
         $data = $this->options;
+	
+	if(!isset($data['theme'])) $data['theme'] = 'theme-1';
+	if(!isset($data['expand'])) $data['expand'] = 'false';
+	if(!isset($data['faq_speed'])) $data['faq_speed'] = 500;
+	
         if($id != '')
         {
             $cat = get_term( $id, 'faq_categories' );
@@ -104,13 +124,13 @@ class FAQ extends BASE
      */
     public function faq_settings() {
         if (!current_user_can('manage_options')) {  
-            wp_die('You do not have sufficient permissions to access this page.');  
+            wp_die(__('You do not have sufficient permissions to access this page.', LANG_DOMAIN));  
         }
 
         ?>
         <div class="wrap rev-admin">
             <?php screen_icon('tools'); ?>
-            <h2>Faq Settings</h2>
+            <h2><?php _e('Faq Settings', LANG_DOMAIN); ?></h2>
             <form method="post" action="options.php"> 
                 <?php settings_fields('faq_options'); ?>
                 <?php do_settings_sections('faq_settings'); ?>
@@ -128,11 +148,11 @@ class FAQ extends BASE
         
         register_setting('faq_options', 'faq_options');
         
-        add_settings_section('faq_main_section', 'Faq Settings', array($this, 'faq_main_sec_cb'), 'faq_settings');
-        add_settings_field('faq_theme', 'Choose a theme:', array($this, 'faq_theme'), 'faq_settings', 'faq_main_section');
-        add_settings_field('faq_expand', 'Enable expand all rows:', array($this, 'faq_expand'), 'faq_settings', 'faq_main_section');
-        add_settings_field('faq_speed', 'Animation Speed:', array($this, 'faq_speed'), 'faq_settings', 'faq_main_section');
-        add_settings_field('faq_css', 'Custom CSS:', array($this, 'faq_css'), 'faq_settings', 'faq_main_section');
+        add_settings_section('faq_main_section', __('Faq Settings', LANG_DOMAIN), array($this, 'faq_main_sec_cb'), 'faq_settings');
+        add_settings_field('faq_theme', __('Choose a theme:', LANG_DOMAIN), array($this, 'faq_theme'), 'faq_settings', 'faq_main_section');
+        add_settings_field('faq_expand', __('Enable expand all rows:', LANG_DOMAIN), array($this, 'faq_expand'), 'faq_settings', 'faq_main_section');
+        add_settings_field('faq_speed', __('Animation Speed:', LANG_DOMAIN), array($this, 'faq_speed'), 'faq_settings', 'faq_main_section');
+        add_settings_field('faq_css', __('Custom CSS:', LANG_DOMAIN), array($this, 'faq_css'), 'faq_settings', 'faq_main_section');
     }
     
     /*
@@ -140,29 +160,29 @@ class FAQ extends BASE
      */
     public function faq_theme() {
         $html = "<select name='faq_options[theme]'>";
-        $html .= "<option value='theme-1' ". (($this->options['theme'] == 'theme-1') ? 'selected' : '').">Theme 1</option>";
-        $html .= "<option value='theme-2' ". (($this->options['theme'] == 'theme-2') ? 'selected' : '').">Theme 2</option>";
-        $html .= "<option value='theme-3' ". (($this->options['theme'] == 'theme-3') ? 'selected' : '').">Theme 3</option>";
-        $html .= "<option value='theme-4' ". (($this->options['theme'] == 'theme-4') ? 'selected' : '').">Theme 4</option>";
-        $html .= "<option value='theme-5' ". (($this->options['theme'] == 'theme-5') ? 'selected' : '').">Theme 5</option>";
-        $html .= "<option value='theme-6' ". (($this->options['theme'] == 'theme-6') ? 'selected' : '').">Theme 6</option>";
-        $html .= "<option value='theme-7' ". (($this->options['theme'] == 'theme-7') ? 'selected' : '').">Theme 7</option>";
-        $html .= "<option value='theme-8' ". (($this->options['theme'] == 'theme-8') ? 'selected' : '').">Theme 8</option>";
-        $html .= "<option value='theme-9' ". (($this->options['theme'] == 'theme-9') ? 'selected' : '').">Theme 9</option>";
+        $html .= "<option value='theme-1' ". (($this->options['theme'] == 'theme-1') ? 'selected' : '').">". __('Theme 1', LANG_DOMAIN) . "</option>";
+        $html .= "<option value='theme-2' ". (($this->options['theme'] == 'theme-2') ? 'selected' : '').">". __('Theme 2', LANG_DOMAIN) . "</option>";
+        $html .= "<option value='theme-3' ". (($this->options['theme'] == 'theme-3') ? 'selected' : '').">". __('Theme 3', LANG_DOMAIN) . "</option>";
+        $html .= "<option value='theme-4' ". (($this->options['theme'] == 'theme-4') ? 'selected' : '').">". __('Theme 4', LANG_DOMAIN) . "</option>";
+        $html .= "<option value='theme-5' ". (($this->options['theme'] == 'theme-5') ? 'selected' : '').">". __('Theme 5', LANG_DOMAIN) . "</option>";
+        $html .= "<option value='theme-6' ". (($this->options['theme'] == 'theme-6') ? 'selected' : '').">". __('Theme 6', LANG_DOMAIN) . "</option>";
+        $html .= "<option value='theme-7' ". (($this->options['theme'] == 'theme-7') ? 'selected' : '').">". __('Theme 7', LANG_DOMAIN) . "</option>";
+        $html .= "<option value='theme-8' ". (($this->options['theme'] == 'theme-8') ? 'selected' : '').">". __('Theme 8', LANG_DOMAIN) . "</option>";
+        $html .= "<option value='theme-9' ". (($this->options['theme'] == 'theme-9') ? 'selected' : '').">". __('Theme 9', LANG_DOMAIN) . "</option>";
         $html .= "</select>";
         echo $html;
     }
     
     public function faq_expand() {
         $html = "<select name='faq_options[expand]'>";
-        $html .= "<option value='false' ". (($this->options['expand'] == 'false') ? 'selected' : '').">No</option>";
-        $html .= "<option value='true' ". (($this->options['expand'] == 'true') ? 'selected' : '').">Yes</option>";
+        $html .= "<option value='false' ". (($this->options['expand'] == 'false') ? 'selected' : '').">". __('No', LANG_DOMAIN) ."</option>";
+        $html .= "<option value='true' ". (($this->options['expand'] == 'true') ? 'selected' : '').">". __('Yes', LANG_DOMAIN) ."</option>";
         $html .= "</select>";
         echo $html;
     }
     
     public function faq_speed() {
-        echo "<input type='text' name='faq_options[faq_speed]' value='{$this->options['faq_speed']}' /> The lower the value, the faster the animation";
+        echo "<input type='text' name='faq_options[faq_speed]' value='{$this->options['faq_speed']}' /> ". __('The lower the value, the faster the animation', LANG_DOMAIN);
     }
     
     public function faq_css() {

@@ -6,7 +6,7 @@ class FAQ_Widget extends WP_Widget {
     
     //Constructor
     public function __construct() {
-        parent::__construct('faq_widget', 'FAQ Widget', array( 'description' => __( 'A FAQ Widget', 'faq' ), ));
+        parent::__construct('faq_widget', __('FAQ Widget', LANG_DOMAIN), array( 'description' => __( 'A FAQ Widget', LANG_DOMAIN ), ));
         $this->options = get_option('faq_options');
     }
     
@@ -21,6 +21,9 @@ class FAQ_Widget extends WP_Widget {
             $cat = get_term( $catid, 'faq_categories' );
             $html = '';
             $data = $this->options;
+            if(!isset($data['theme'])) $data['theme'] = 'theme-1';
+            if(!isset($data['expand'])) $data['expand'] = 'false';
+            if(!isset($data['faq_speed'])) $data['faq_speed'] = 500;
             include plugin_dir_path( __FILE__ ).'../templates/widget_view.php';
             echo $html;
         }
@@ -40,7 +43,7 @@ class FAQ_Widget extends WP_Widget {
         }
         ?>
         <p>
-        <label for="<?php echo $this->get_field_name( 'catid' ); ?>"><?php _e( 'Category ID:' ); ?></label> 
+        <label for="<?php echo $this->get_field_name( 'catid' ); ?>"><?php _e( 'Category ID:', LANG_DOMAIN ); ?></label> 
         <input class="widefat" id="<?php echo $this->get_field_id( 'catid' ); ?>" name="<?php echo $this->get_field_name( 'catid' ); ?>" type="text" value="<?php echo esc_attr( $catid ); ?>" />
         </p>
         <?php 
