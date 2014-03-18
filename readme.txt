@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: faqs, faq
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.4
+Stable tag: 2.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,9 @@ Demo: http://dev.bappi-d-great.com/faq-all/
 Yes
 
 == Changelog ==
+= 2.1.5 =
+* Theme names are updated
+
 = 2.1 =
 * JS Error fixed
 
