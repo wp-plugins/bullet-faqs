@@ -3,7 +3,7 @@
 Plugin Name: Bullet FAQs
 Plugin URI: http://bappi-d-great.com
 Description: Provides nice Frequently Asked Questions Page with answers hidden untill the question is clicked then the desired answer fades smoothly into view, like accordion. User will have options to add categories, and questions based on those categories. Users can show question from a single category using shortcode. They will have control to change theme (among 9 themes), animation speed and custom CSS.
-Version: 2.1.2
+Version: 2.1.3
 Author: Bappi D Great
 Author URI: http://bappi-d-great.com
 License: GPLv2 or later
