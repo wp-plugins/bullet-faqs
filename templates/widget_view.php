@@ -5,7 +5,8 @@
 <?php
     $args = array(
         'post_type' => 'faq',
-        'faq_categories' => $cat->slug
+        'faq_categories' => $cat->slug,
+        'posts_per_page' => -1
     );
     $posts = get_posts($args);
 ?>
