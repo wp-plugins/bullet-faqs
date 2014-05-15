@@ -3,10 +3,12 @@ Contributors: bappi.d.great, ugotsta
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VZB6MW3L4F526
 Tags: faqs, faq
 Requires at least: 3.0.1
-Tested up to: 3.8
-Stable tag: 2.1.7
+Tested up to: 3.9.1
+Stable tag: 2.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Get a beautiful accordion style FAQs for your website.
 
 == Description ==
 
@@ -45,6 +47,9 @@ Demo: http://dev.bappi-d-great.com/faq-all/
 Yes
 
 == Changelog ==
+= 2.1.8 =
+* Little issue fixed
+
 = 2.1.7 =
 * Category view is fixed
 
