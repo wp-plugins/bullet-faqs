@@ -18,7 +18,6 @@ There is also a widget where the user can show FAQs from a category.
 
 Don’t like any theme? You can write css in custom css box in the settings page.
 
-Demo: http://dev.bappi-d-great.com/faq-all/
 
 == Installation ==
 
