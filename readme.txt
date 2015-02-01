@@ -4,13 +4,15 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: faqs, faq
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 2.1.8
+Stable tag: 2.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Get a beautiful accordion style FAQs for your website.
 
 == Description ==
+
+<blockquote>We are sorry to announce that, there won't be any more development of Bullet FAQ plugin. The project is handed over to <a href="http://duogeek.com" target="_blank">duogeek</a>. You can try the new FAQ plugin - <a href="https://wordpress.org/plugins/duofaq-responsive-flat-simple-faq/" target="_blank">duoFAQ - Responsive, Flat, Simple FAQ</a>. Note that, if you use transalated version of the plugin, then <em>DO NOT</em> use it yet. You <u>will not need</u> to create your questions, answer and categories. They will be auto integrated.</blockquote>
 
 Provides nice Frequently Asked Questions Page with answers hidden until the question is clicked then the desired answer fades smoothly into view, like accordion. User will have options to add categories, and questions based on those categories. Users can show question from a single category using shortcode. They will have control to change theme (among 9 themes), animation speed and custom CSS.
 

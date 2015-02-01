@@ -1,17 +1,19 @@
 <?php
 /*
 Plugin Name: Bullet FAQs
-Plugin URI: http://bappi-d-great.com
+Plugin URI: http://kodepress.com
 Description: Provides nice Frequently Asked Questions Page with answers hidden untill the question is clicked then the desired answer fades smoothly into view, like accordion. User will have options to add categories, and questions based on those categories. Users can show question from a single category using shortcode. They will have control to change theme (among 9 themes), animation speed and custom CSS.
-Version: 2.1.8
-Author: Bappi D Great
-Author URI: http://bappi-d-great.com
+Version: 2.1.9
+Author: Kodepress
+Author URI: http://kodepress.com
 License: GPLv2 or later
 */
 
 define ('LANG_DOMAIN', 'bllfaq');
 define ('PLUGIN_PATH_CSS', plugins_url( 'css/faqs.css', __FILE__ ));
 define ('PLUGIN_PATH_JS', plugins_url( 'js/faqAccordion.js', __FILE__ ));
+
+if( ! defined( 'HIDE_FAQ_NOTICE' ) ) define( 'HIDE_FAQ_NOTICE', false );
 
 require_once 'lib/base.php';
 require_once 'lib/widget.php';
@@ -29,6 +31,7 @@ class FAQ extends BASE
         $this->options = get_option('faq_options');
 	
 	add_action('plugin_loaded', array($this, 'localization'));
+	add_action( 'admin_notices', array( $this, 'bf_admin_notice' ) );
 	
     }
     
@@ -39,6 +42,28 @@ class FAQ extends BASE
         }
         $temp_locale = explode('_', get_locale());
         $this->language = ($temp_locale) ? $temp_locale[0] : 'en';
+    }
+    
+    public function bf_admin_notice() {
+	
+	if( isset( $_REQUEST['hide_bf_nag_notice'] ) && $_REQUEST['hide_bf_nag_notice'] == 1 ){
+	    update_user_meta( get_current_user_id(), 'hide_bf_nag_notice', 1 );
+	}
+	
+	if( isset( $_REQUEST['hide_bf_nag_notice'] ) && $_REQUEST['hide_bf_nag_notice'] == 0 ){
+	    update_user_meta( get_current_user_id(), 'hide_bf_nag_notice', 0 );
+	}
+	
+	$notice = get_user_meta( get_current_user_id(), 'hide_bf_nag_notice', true );
+	
+	if( ! isset( $notice ) || $notice != 1 ){
+	
+	?>
+	<div class="error">
+	    <p>We are sorry to announce that, there won't be any more development of Bullet FAQ plugin. The project is handed over to <a href="http://duogeek.com" target="_blank">duogeek</a>. You can try the new FAQ plugin - <a href="https://wordpress.org/plugins/duofaq-responsive-flat-simple-faq/" target="_blank">duoFAQ - Responsive, Flat, Simple FAQ</a>. Note that, if you use transalated version of the plugin, then <em>DO NOT</em> use it yet. You <u>will not need</u> to create your questions, answer and categories. They will be auto integrated.<br><br><a href="?hide_bf_nag_notice=1">Don't show this notice anymore.</a></p>
+	</div>
+	<?php
+	}
     }
     
     /*
@@ -129,8 +154,20 @@ class FAQ extends BASE
 
         ?>
         <div class="wrap rev-admin">
-            <?php screen_icon('tools'); ?>
             <h2><?php _e('Faq Settings', LANG_DOMAIN); ?></h2>
+	    <?php
+		$notice = get_user_meta( get_current_user_id(), 'hide_bf_nag_notice', true );
+		$hide_notice = HIDE_FAQ_NOTICE;
+	
+		if( ( ! isset( $notice ) || $notice != 0 ) && ! HIDE_FAQ_NOTICE ){
+		
+		?>
+		<div class="error">
+		    <p>We are sorry to announce that, there won't be any more development of Bullet FAQ plugin. The project is handed over to <a href="http://duogeek.com" target="_blank">duogeek</a>. You can try the new FAQ plugin - <a href="https://wordpress.org/plugins/duofaq-responsive-flat-simple-faq/" target="_blank">duoFAQ - Responsive, Flat, Simple FAQ</a>. Note that, if you use transalated version of the plugin, then <em>DO NOT</em> use it yet. You <u>will not need</u> to create your questions, answer and categories. They will be auto integrated.<br><br>To hide this message use this code in wp-config.php: define( 'HIDE_FAQ_NOTICE', true );</p>
+		</div>
+		<?php
+		}
+	    ?>
             <form method="post" action="options.php"> 
                 <?php settings_fields('faq_options'); ?>
                 <?php do_settings_sections('faq_settings'); ?>
